@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.triviaquiz.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_questionList"
+            app:destination="@id/questionList" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionList"
+        android:name="com.example.triviaquiz.QuestionList"
+        android:label="fragment_question_list"
+        tools:layout="@layout/fragment_question_list" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="Anonymous"/>
+        <action
+            android:id="@+id/action_questionList_to_results"
+            app:destination="@id/results"
+            app:popUpTo="@id/questionList"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/results"
+        android:name="com.example.triviaquiz.Results"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="Anonymous"/>
+        <argument
+            android:name="questions"
+            app:argType="string"
+            android:defaultValue="[]"/>
+        <argument
+            android:name="answers"
+            app:argType="string"
+            android:defaultValue="[]"/>
+    </fragment>
+</navigation>
